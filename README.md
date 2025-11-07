@@ -68,5 +68,5 @@ The service will now run automatically every time the system boots up and establ
 To test the script manually, you can run it from your terminal:
 
 ```bash
-/usr/local/bin/hc.sh
+bash ~/hc.sh
 ```
