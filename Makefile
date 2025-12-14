@@ -13,6 +13,7 @@ install:
 	chmod +x $(INSTALL_DIR)/$(SCRIPT_NAME)
 	@echo "Installing $(CONF_NAME) to $(CONF_DIR)..."
 	cp $(CONF_NAME) $(CONF_DIR)/$(CONF_NAME)
+	chmod 600 $(CONF_DIR)/$(CONF_NAME)
 	@echo "Installing $(SERVICE_NAME) to $(SYSTEMD_DIR)..."
 	cp $(SERVICE_NAME) $(SYSTEMD_DIR)/$(SERVICE_NAME)
 	sed -i 's|/usr/local/bin/hc.sh|$(INSTALL_DIR)/$(SCRIPT_NAME)|g' $(SYSTEMD_DIR)/$(SERVICE_NAME)
