@@ -6,13 +6,18 @@ log_error() {
     echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
 }
 
-# Default configuration
-WEBHOOK=""
-
 # Load configuration from file
 CONFIG_FILE="/etc/hc.conf"
 if [ -f "$CONFIG_FILE" ]; then
     source "$CONFIG_FILE"
+else
+    log_error "Configuration file not found: $CONFIG_FILE"
+    exit 1
+fi
+
+if [[ -z "$WEBHOOK" ]]; then
+    log_error "WEBHOOK not set in configuration"
+    exit 1
 fi
 
 PUBLIC_IP=$(curl -s ifconfig.me/ip)
