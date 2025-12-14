@@ -22,27 +22,21 @@ For example, this would be particularly useful for headless devices like a Raspb
 
 ## Setup
 
-1.  **Install the Service**
+1.  **Configure the Webhook**
 
-    Run the following command to install the script and service file:
+    Open the `hc.conf` file and replace the empty value within `WEBHOOK` variable with your actual webhook URL.
+
+    ```bash
+    # Configuration for hc.sh
+    WEBHOOK="YOUR_DISCORD_WEBHOOK_URL_HERE"
+    ```
+
+2.  **Install the Service**
+
+    Run the following command to install the script, configuration, and service file:
 
     ```bash
     sudo make install
-    ```
-
-2.  **Configure the Webhook**
-
-    Open the installed script file and replace the empty value within `WEBHOOK` variable with your actual webhook URL.
-
-    ```bash
-    sudo nano /usr/local/bin/hc.sh
-    ```
-
-    ```bash
-    #!/bin/bash
-
-    WEBHOOK="YOUR_DISCORD_WEBHOOK_URL_HERE"
-    # ... rest of the script
     ```
 
 3.  **Enable the Service**
