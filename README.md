@@ -22,9 +22,21 @@ For example, this would be particularly useful for headless devices like a Raspb
 
 ## Setup
 
-1.  **Configure the Webhook and Service**
+1.  **Install the Service**
 
-    Open the `hc.sh` file and replace the empty value within `WEBHOOK` variable with your actual webhook URL.
+    Run the following command to install the script and service file:
+
+    ```bash
+    sudo make install
+    ```
+
+2.  **Configure the Webhook**
+
+    Open the installed script file and replace the empty value within `WEBHOOK` variable with your actual webhook URL.
+
+    ```bash
+    sudo nano /usr/local/bin/hc.sh
+    ```
 
     ```bash
     #!/bin/bash
@@ -33,32 +45,12 @@ For example, this would be particularly useful for headless devices like a Raspb
     # ... rest of the script
     ```
 
-    Additionally make sure to modify `hc.service` to include the absolute path where the `hc.sh` script will be located.
+3.  **Enable the Service**
 
-2.  **Make the Script Executable**
-
-    Open a terminal and run the following command to make the script executable:
+    Finally, enable the service to start on boot.
 
     ```bash
-    chmod +x hc.sh
-    ```
-
-3.  **Install the Service**
-
-    Now, you need to move the script and the service file to the appropriate system directories.
-
-    ```bash
-    sudo mv hc.sh ~/
-    sudo mv hc.service /etc/systemd/system/
-    ```
-
-4.  **Enable the Service**
-
-    Finally, reload the systemd daemon to recognize the new service and enable it to start on boot.
-
-    ```bash
-    sudo systemctl daemon-reload
-    sudo systemctl enable hc.service
+    sudo make enable
     ```
 
 ## Usage
@@ -68,5 +60,13 @@ The service will now run automatically every time the system boots up and establ
 To test the script manually, you can run it from your terminal:
 
 ```bash
-bash ~/hc.sh
+/usr/local/bin/hc.sh
+```
+
+## Uninstallation
+
+To remove the service and script:
+
+```bash
+sudo make uninstall
 ```
