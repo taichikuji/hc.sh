@@ -5,7 +5,7 @@ Wants=network-online.target time-sync.target
 
 [Service]
 Type=oneshot
-ExecStart=/<location>/hc.sh
+ExecStart=/usr/local/bin/hc.sh
 
 [Install]
 WantedBy=multi-user.target

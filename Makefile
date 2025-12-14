@@ -15,7 +15,7 @@ install:
 	cp $(CONF_NAME) $(CONF_DIR)/$(CONF_NAME)
 	@echo "Installing $(SERVICE_NAME) to $(SYSTEMD_DIR)..."
 	cp $(SERVICE_NAME) $(SYSTEMD_DIR)/$(SERVICE_NAME)
-	sed -i 's|/<location>/hc.sh|$(INSTALL_DIR)/$(SCRIPT_NAME)|g' $(SYSTEMD_DIR)/$(SERVICE_NAME)
+	sed -i 's|/usr/local/bin/hc.sh|$(INSTALL_DIR)/$(SCRIPT_NAME)|g' $(SYSTEMD_DIR)/$(SERVICE_NAME)
 	@echo "Installation complete. Please ensure $(CONF_DIR)/$(CONF_NAME) is configured before enabling."
 
 uninstall:
